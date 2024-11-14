@@ -5,9 +5,11 @@ import com.example.todoappdevelop.dto.user.LoginResponseDto;
 import com.example.todoappdevelop.repository.LoginRepository;
 import com.example.todoappdevelop.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +36,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login(
-            @Validated @RequestBody LoginRequestDto requestDto,
+            @Valid @RequestBody LoginRequestDto requestDto,
             HttpServletRequest request
     ) {
         LoginResponseDto loginResponseDto = loginService.login(requestDto.getUsername(), requestDto.getPassword(), request);

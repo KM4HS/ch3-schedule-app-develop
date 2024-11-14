@@ -3,6 +3,7 @@ package com.example.todoappdevelop.dto.user;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -25,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class LoginRequestDto {
 
     @NotBlank
-    @Email
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$", message = "이메일 형식에 맞지 않습니다.")
     private final String username;
 
     @NotNull
