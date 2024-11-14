@@ -32,17 +32,6 @@ public class UserController {
 
     private final UserService userService;
 
-    // 회원가입
-    @PostMapping("/signup")
-    public ResponseEntity<UserResponseDto> signup(
-            @Validated @RequestBody UserRequestDto requestDto
-    ) {
-
-        UserResponseDto userResponseDto = userService.signup(requestDto.getName(), requestDto.getUsername(), requestDto.getPassword());
-
-        return new ResponseEntity<>(userResponseDto, HttpStatus.CREATED);
-    }
-
     // 전체 조회
     @GetMapping
     public ResponseEntity<List<UserResponseDto>> findAllUsers() {

@@ -2,6 +2,8 @@ package com.example.todoappdevelop.controller;
 
 import com.example.todoappdevelop.dto.user.LoginRequestDto;
 import com.example.todoappdevelop.dto.user.LoginResponseDto;
+import com.example.todoappdevelop.dto.user.UserRequestDto;
+import com.example.todoappdevelop.dto.user.UserResponseDto;
 import com.example.todoappdevelop.repository.LoginRepository;
 import com.example.todoappdevelop.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,6 +35,17 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
 
     private final LoginService loginService;
+
+    // 회원가입
+    @PostMapping("/signup")
+    public ResponseEntity<UserResponseDto> signup(
+            @Validated @RequestBody UserRequestDto requestDto
+    ) {
+
+        UserResponseDto userResponseDto = loginService.signup(requestDto.getName(), requestDto.getUsername(), requestDto.getPassword());
+
+        return new ResponseEntity<>(userResponseDto, HttpStatus.CREATED);
+    }
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login(

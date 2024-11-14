@@ -29,7 +29,7 @@ import java.io.IOException;
 @Slf4j
 public class LoginFilter implements Filter {
 
-    private static final String[] WHITE_LIST = {"/", "/users/signup", "/session/login"};
+    private static final String[] WHITE_LIST = {"/", "/session/signup", "/session/login"};
 
 
     @Override

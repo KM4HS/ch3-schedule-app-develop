@@ -1,5 +1,6 @@
 package com.example.todoappdevelop.service;
 
+import com.example.todoappdevelop.config.PasswordEncoder;
 import com.example.todoappdevelop.dto.user.UserResponseDto;
 import com.example.todoappdevelop.entity.User;
 import com.example.todoappdevelop.repository.UserRepository;
@@ -28,15 +29,6 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
-
-    public UserResponseDto signup(@NotBlank String name, @NotBlank String username, @NotBlank String password) {
-
-        User user = new User(name, username, password);
-
-        User savedUser = userRepository.save(user);
-
-        return UserResponseDto.toDto(savedUser);
-    }
 
     public List<UserResponseDto> findAllUsers() {
 
