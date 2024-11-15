@@ -1,10 +1,13 @@
 package com.example.todoappdevelop.exception;
 
+import org.hibernate.annotations.processing.SQL;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  * <ul>
@@ -34,6 +37,15 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(
                 new ExceptionResponseDto(
                         e.getFieldError().getDefaultMessage()
+                ), HttpStatus.BAD_REQUEST
+        );
+    }
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public ResponseEntity<ExceptionResponseDto> handleSQLException(SQLIntegrityConstraintViolationException e) {
+        return new ResponseEntity<>(
+                new ExceptionResponseDto(
+                        e.getLocalizedMessage()
                 ), HttpStatus.BAD_REQUEST
         );
     }

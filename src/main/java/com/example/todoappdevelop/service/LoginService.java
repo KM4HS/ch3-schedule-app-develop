@@ -14,7 +14,10 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  * <ul>
@@ -45,6 +48,7 @@ public class LoginService {
      * @param password 비밀번호, db에는 암호화하여 저장
      * @return 가입한 유저 정보가 담긴 응답 dto
      */
+    @Transactional
     public UserResponseDto signup(@NotBlank String name, @NotBlank String username, @NotBlank String password) {
 
         String encodedPassword = passwordEncoder.encode(password);

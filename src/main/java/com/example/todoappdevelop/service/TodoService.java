@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -82,6 +83,7 @@ public class TodoService {
      * @param contents 수정할 내용
      * @return 수정된 일정 담긴 응답 dto
      */
+    @Transactional
     public TodoResponseDto updateTodo(Long id, @NotBlank String title, @NotNull String contents) {
 
         Todo findTodo = todoRepository.findByIdOrElseThrow(id);
