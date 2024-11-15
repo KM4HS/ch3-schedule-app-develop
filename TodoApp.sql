@@ -1,7 +1,7 @@
 CREATE SCHEMA `todo-app`;
 USE `todo-app`;
 
-CREATE TABLE `todo-test`
+CREATE TABLE `todo`
 (
     id          BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title       VARCHAR(255) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE `todo-test`
     user_id     BIGINT
 );
 
-CREATE TABLE `user-test`
+CREATE TABLE `user`
 (
     id          BIGINT              NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(255)        NOT NULL,
@@ -21,6 +21,6 @@ CREATE TABLE `user-test`
     modified_at DATETIME(6)
 );
 
-ALTER TABLE `todo-test`
+ALTER TABLE `todo`
     ADD FOREIGN KEY (user_id)
-        REFERENCES `user-test` (id);
+        REFERENCES `user` (id);
