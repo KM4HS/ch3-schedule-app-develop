@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
  * <li>fileName       : UserResponseDto
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 유저 응답 dto
  * </ul>
  * ===========================================================
  * <p>
@@ -28,6 +28,12 @@ public class UserResponseDto {
 
     private final String username;
 
+    /**
+     * 유저 엔티티를 dto로 매핑
+     *
+     * @param user 유저 엔티티
+     * @return 매핑된 dto
+     */
     public static UserResponseDto toDto(User user) {
         return new UserResponseDto(
                 user.getId(),

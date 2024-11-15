@@ -13,7 +13,7 @@ import java.util.Optional;
  * <li>fileName       : UserRepository
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 유저 레포지토리
  * </ul>
  * ===========================================================
  * <p>
@@ -22,14 +22,32 @@ import java.util.Optional;
  */
 
 public interface UserRepository extends JpaRepository<User, Long> {
+    /**
+     * username으로 유저를 찾음
+     *
+     * @param username 아이디(이메일 형식)
+     * @return 조회된 User
+     */
     Optional<User> findByUsername(String username);
 
+    /**
+     * username으로 유저를 찾고, 없을시 throw
+     *
+     * @param username 아이디(이메일 형식)
+     * @return 조회된 User
+     */
     default User findUserByUsernameOrElseThrow(String username) {
         return findByUsername(username).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exist username = " + username)
         );
     }
 
+    /**
+     * id로 유저를 찾고, 없을시 throw
+     *
+     * @param id 유저 식별자
+     * @return 조회된 User
+     */
     default User findUserByIdOrElseThrow(Long id) {
         return findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exist id = " + id)

@@ -22,7 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
  * <li>fileName       : LoginService
  * <li>author         : daca0
  * <li>date           : 24. 11. 15.
- * <li>description    :
+ * <li>description    : 로그인 관련 기능 서비스
  * </ul>
  * ===========================================================
  * <p>
@@ -37,25 +37,39 @@ public class LoginService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * 회원가입 메서드
+     *
+     * @param name     이름
+     * @param username 아이디(이메일 형식)
+     * @param password 비밀번호, db에는 암호화하여 저장
+     * @return 가입한 유저 정보가 담긴 응답 dto
+     */
     public UserResponseDto signup(@NotBlank String name, @NotBlank String username, @NotBlank String password) {
 
         String encodedPassword = passwordEncoder.encode(password);
 
         User user = new User(name, username, encodedPassword);
-
         User savedUser = userRepository.save(user);
 
         return UserResponseDto.toDto(savedUser);
     }
 
+    /**
+     * 로그인 메서드
+     *
+     * @param username 아이디(이메일 형식)
+     * @param password 비밀번호
+     * @return 로그인된 유저 id를 담은 응답 dto
+     */
     public LoginResponseDto login(@NotBlank @Email String username, @NotNull String password, HttpServletRequest request) {
 
         User loginUser = userRepository.findByUsername(username).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.UNAUTHORIZED)
         );
 
-        if(!passwordEncoder.matches(password, loginUser.getPassword())) {
-           throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        if (!passwordEncoder.matches(password, loginUser.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
         HttpSession session = request.getSession();

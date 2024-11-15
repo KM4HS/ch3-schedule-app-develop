@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * <li>fileName       : BaseEntity
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 생성일, 수정일 포함하는 공통 엔티티
  * </ul>
  * ===========================================================
  * <p>

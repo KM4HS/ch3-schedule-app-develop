@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
  * <li>fileName       : UserRequestDto
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 유저 요청 dto
  * </ul>
  * ===========================================================
  * <p>

@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
  * <li>fileName       : TodoResponseDto
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 일정 응답 dto
  * </ul>
  * ===========================================================
  * <p>
@@ -28,6 +28,12 @@ public class TodoResponseDto {
 
     private final String contents;
 
+    /**
+     * 일정 엔티티를 dto로 매핑
+     *
+     * @param todo 일정 엔티티
+     * @return 매핑된 dto
+     */
     public static TodoResponseDto toDto(Todo todo) {
         return new TodoResponseDto(
                 todo.getId(),

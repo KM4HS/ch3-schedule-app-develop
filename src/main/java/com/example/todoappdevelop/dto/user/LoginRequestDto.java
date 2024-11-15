@@ -1,6 +1,5 @@
 package com.example.todoappdevelop.dto.user;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -13,7 +12,7 @@ import lombok.RequiredArgsConstructor;
  * <li>fileName       : LoginRequestDto
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 로그인 요청 dto
  * </ul>
  * ===========================================================
  * <p>

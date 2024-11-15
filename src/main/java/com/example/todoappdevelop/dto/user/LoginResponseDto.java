@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
  * <li>fileName       : LoginResponseDto
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 로그인 응답 dto
  * </ul>
  * ===========================================================
  * <p>

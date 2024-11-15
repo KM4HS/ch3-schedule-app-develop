@@ -3,7 +3,6 @@ package com.example.todoappdevelop.repository;
 import com.example.todoappdevelop.entity.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
@@ -12,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
  * <li>fileName       : TodoRepository
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 일정 레포지토리
  * </ul>
  * ===========================================================
  * <p>
@@ -21,6 +20,12 @@ import org.springframework.web.server.ResponseStatusException;
  */
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
+    /**
+     * id로 일정을 조회하고, 없는 경우 throw
+     *
+     * @param id 일정 식별자
+     * @return 조회된 일정
+     */
     default Todo findByIdOrElseThrow(Long id) {
         return findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exist id = " + id)

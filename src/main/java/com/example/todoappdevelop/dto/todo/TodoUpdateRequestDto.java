@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
  * <li>fileName       : TodoUpdateRequestDto
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 일정 수정 요청 dto
  * </ul>
  * ===========================================================
  * <p>

@@ -1,4 +1,5 @@
 package com.example.todoappdevelop.config;
+
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
  * <li>fileName       : PasswordEncoder
  * <li>author         : daca0
  * <li>date           : 24. 11. 15.
- * <li>description    :
+ * <li>description    : 비밀번호 암호화 클래스, 예제와 동일
  * </ul>
  * ===========================================================
  * <p>

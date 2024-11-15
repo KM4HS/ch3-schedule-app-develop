@@ -10,7 +10,7 @@ import lombok.Setter;
  * <li>fileName       : Todo
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 일정 엔티티
  * </ul>
  * ===========================================================
  * <p>
@@ -37,13 +37,26 @@ public class Todo extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Todo(){}
+    public Todo() {
+    }
 
+    /**
+     * 일정 생성 메서드를 위한 생성자
+     *
+     * @param title    제목
+     * @param contents 내용
+     */
     public Todo(String title, String contents) {
         this.title = title;
         this.contents = contents;
     }
 
+    /**
+     * 일정 수정 메서드
+     *
+     * @param title    수정할 제목
+     * @param contents 수정할 내용
+     */
     public void updateTodo(String title, String contents) {
         this.title = title;
         this.contents = contents;

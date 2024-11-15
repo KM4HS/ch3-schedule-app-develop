@@ -1,12 +1,10 @@
 package com.example.todoappdevelop.controller;
 
-import com.example.todoappdevelop.dto.user.UserRequestDto;
 import com.example.todoappdevelop.dto.user.UserResponseDto;
 import com.example.todoappdevelop.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +15,7 @@ import java.util.List;
  * <li>fileName       : UserController
  * <li>author         : daca0
  * <li>date           : 24. 11. 14.
- * <li>description    :
+ * <li>description    : 유저 관련 기능 컨트롤러
  * </ul>
  * ===========================================================
  * <p>
@@ -32,7 +30,11 @@ public class UserController {
 
     private final UserService userService;
 
-    // 전체 조회
+    /**
+     * 전체 유저 조회 메서드
+     *
+     * @return 200 OK, 조회된 유저 목록이 담긴 응답 dto
+     */
     @GetMapping
     public ResponseEntity<List<UserResponseDto>> findAllUsers() {
 
@@ -41,7 +43,12 @@ public class UserController {
         return new ResponseEntity<>(userResponseDto, HttpStatus.OK);
     }
 
-    // 특정 조회
+    /**
+     * 특정 유저 조회 메서드
+     *
+     * @param id 유저 식별자
+     * @return 200 OK, 조회된 유저 정보 담긴 응답 dto
+     */
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDto> findUserById(
             @PathVariable Long id
@@ -52,7 +59,12 @@ public class UserController {
         return new ResponseEntity<>(userResponseDto, HttpStatus.OK);
     }
 
-    // 삭제
+    /**
+     * 유저 삭제 메서드
+     *
+     * @param id 유저 식별자
+     * @return 200 OK
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(
             @PathVariable Long id

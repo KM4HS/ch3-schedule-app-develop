@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * <li>fileName       : GlobalExceptionHandler
  * <li>author         : daca0
  * <li>date           : 24. 11. 15.
- * <li>description    :
+ * <li>description    : 전역 예외 처리 클래스
  * </ul>
  * ===========================================================
  * <p>
@@ -23,6 +23,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    /**
+     * Valid 예외 처리 메서드
+     *
+     * @param e Valid로 인해 발생한 예외
+     * @return 400 BAD_REQUEST, 예외 메세지 포함한 dto
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ExceptionResponseDto> handleValidException(MethodArgumentNotValidException e) {
         return new ResponseEntity<>(
