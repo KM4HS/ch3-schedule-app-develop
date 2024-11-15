@@ -1,5 +1,8 @@
 package com.example.todoappdevelop.config;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 /**
  * <ul>
  * <li>packageName    : com.example.todoappdevelop.config
@@ -13,6 +16,11 @@ package com.example.todoappdevelop.config;
  * 24. 11. 15.        daca0       최초 생성
  * </p>
  */
-public abstract class Const {
-    public static final String LOGIN_USER = "loginUser";
+
+@Getter
+@RequiredArgsConstructor
+public enum Const {
+    LOGIN_USER ("loginUser");
+
+    private final String key;
 }

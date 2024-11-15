@@ -3,6 +3,7 @@ package com.example.todoappdevelop.service;
 import com.example.todoappdevelop.dto.UserResponseDto;
 import com.example.todoappdevelop.entity.User;
 import com.example.todoappdevelop.repository.UserRepository;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -59,6 +60,7 @@ public class UserService {
      * @param id 유저 식별자
      */
     public void deleteUser(Long id) {
+
         User findUser = userRepository.findUserByIdOrElseThrow(id);
         userRepository.delete(findUser);
     }

@@ -1,11 +1,14 @@
 package com.example.todoappdevelop.controller;
 
+import com.example.todoappdevelop.config.Const;
 import com.example.todoappdevelop.dto.LoginRequestDto;
 import com.example.todoappdevelop.dto.LoginResponseDto;
 import com.example.todoappdevelop.dto.UserRequestDto;
 import com.example.todoappdevelop.dto.UserResponseDto;
+import com.example.todoappdevelop.entity.User;
 import com.example.todoappdevelop.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -65,9 +68,12 @@ public class LoginController {
             @Valid @RequestBody LoginRequestDto requestDto,
             HttpServletRequest request
     ) {
-        LoginResponseDto loginResponseDto = loginService.login(requestDto.getUsername(), requestDto.getPassword(), request);
+        User loginUser = loginService.login(requestDto.getUsername(), requestDto.getPassword());
 
-        return new ResponseEntity<>(loginResponseDto, HttpStatus.OK);
+        HttpSession session = request.getSession();
+        session.setAttribute(Const.LOGIN_USER.getKey(), loginUser);
+
+        return new ResponseEntity<>(new LoginResponseDto(loginUser.getId()), HttpStatus.OK);
     }
 
     /*@PostMapping("/logout")

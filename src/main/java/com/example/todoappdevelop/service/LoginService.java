@@ -14,6 +14,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
@@ -45,6 +46,7 @@ public class LoginService {
      * @param password 비밀번호, db에는 암호화하여 저장
      * @return 가입한 유저 정보가 담긴 응답 dto
      */
+    @Transactional
     public UserResponseDto signup(@NotBlank String name, @NotBlank String username, @NotBlank String password) {
 
         String encodedPassword = passwordEncoder.encode(password);
@@ -62,7 +64,7 @@ public class LoginService {
      * @param password 비밀번호
      * @return 로그인된 유저 id를 담은 응답 dto
      */
-    public LoginResponseDto login(@NotBlank @Email String username, @NotNull String password, HttpServletRequest request) {
+    public User login(@NotBlank @Email String username, @NotNull String password) {
 
         User loginUser = userRepository.findByUsername(username).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.UNAUTHORIZED)
@@ -72,10 +74,7 @@ public class LoginService {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
 
-        HttpSession session = request.getSession();
-        session.setAttribute(Const.LOGIN_USER, loginUser);
-
-        return new LoginResponseDto(loginUser.getId());
+        return loginUser;
     }
 
     /*public void logout(HttpServletRequest request) {

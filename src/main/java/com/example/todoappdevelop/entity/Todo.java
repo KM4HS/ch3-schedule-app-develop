@@ -1,8 +1,11 @@
 package com.example.todoappdevelop.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 /**
  * <ul>
@@ -26,18 +29,19 @@ public class Todo extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10)
+    @Size(max = 10)
     private String title;
 
     @Column(columnDefinition = "longtext")
     private String contents;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    public Todo() {
+    protected Todo() {
     }
 
     /**
@@ -46,9 +50,10 @@ public class Todo extends BaseEntity {
      * @param title    제목
      * @param contents 내용
      */
-    public Todo(String title, String contents) {
+    public Todo(String title, String contents, User user) {
         this.title = title;
         this.contents = contents;
+        this.user = user;
     }
 
     /**

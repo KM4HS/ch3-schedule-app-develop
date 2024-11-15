@@ -1,6 +1,7 @@
 package com.example.todoappdevelop.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 
 /**
@@ -25,16 +26,19 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 4)
+    @Size(max = 4)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 50)
+    @Size(max = 50)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
+    @Size(max = 50)
     private String password;
 
-    public User(){
+    protected User(){
     }
 
     /**

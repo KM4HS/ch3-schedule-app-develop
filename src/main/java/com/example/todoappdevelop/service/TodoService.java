@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -40,10 +41,10 @@ public class TodoService {
      * @param username 작성자 아이디
      * @return 생성된 일정이 담긴 응답 dto
      */
+    @Transactional
     public TodoResponseDto createTodo(@NotBlank String title, @NotBlank String contents, @NotBlank String username) {
 
-        Todo todo = new Todo(title, contents);
-        todo.setUser(userRepository.findUserByUsernameOrElseThrow(username));
+        Todo todo = new Todo(title, contents, userRepository.findUserByUsernameOrElseThrow(username));
         Todo savedTodo = todoRepository.save(todo);
 
         return TodoResponseDto.toDto(savedTodo);
@@ -82,6 +83,7 @@ public class TodoService {
      * @param contents 수정할 내용
      * @return 수정된 일정 담긴 응답 dto
      */
+    @Transactional
     public TodoResponseDto updateTodo(Long id, @NotBlank String title, @NotNull String contents) {
 
         Todo findTodo = todoRepository.findByIdOrElseThrow(id);
