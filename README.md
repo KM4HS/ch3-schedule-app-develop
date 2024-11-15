@@ -4,7 +4,8 @@ JDBC 버전 -> https://github.com/KM4HS/ch3-schedule-app
 
 - [API 명세서](https://documenter.getpostman.com/view/39379332/2sAY55be8S)
 - ERD
-- ![Scheudle-develop-ERD](https://github.com/user-attachments/assets/2c41c4b9-0787-4720-8ef4-c0ae63b940ae)
+
+![Scheudle-develop-ERD](https://github.com/user-attachments/assets/2c41c4b9-0787-4720-8ef4-c0ae63b940ae)
 
 ## 작업 환경
 - JDK 17
