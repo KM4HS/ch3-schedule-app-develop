@@ -1,6 +1,6 @@
 package com.example.todoappdevelop.service;
 
-import com.example.todoappdevelop.dto.user.UserResponseDto;
+import com.example.todoappdevelop.dto.UserResponseDto;
 import com.example.todoappdevelop.entity.User;
 import com.example.todoappdevelop.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

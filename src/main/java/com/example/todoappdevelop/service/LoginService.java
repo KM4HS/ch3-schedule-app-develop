@@ -2,8 +2,8 @@ package com.example.todoappdevelop.service;
 
 import com.example.todoappdevelop.config.Const;
 import com.example.todoappdevelop.config.PasswordEncoder;
-import com.example.todoappdevelop.dto.user.LoginResponseDto;
-import com.example.todoappdevelop.dto.user.UserResponseDto;
+import com.example.todoappdevelop.dto.LoginResponseDto;
+import com.example.todoappdevelop.dto.UserResponseDto;
 import com.example.todoappdevelop.entity.User;
 import com.example.todoappdevelop.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;

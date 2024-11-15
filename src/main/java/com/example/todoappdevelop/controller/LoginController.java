@@ -1,9 +1,9 @@
 package com.example.todoappdevelop.controller;
 
-import com.example.todoappdevelop.dto.user.LoginRequestDto;
-import com.example.todoappdevelop.dto.user.LoginResponseDto;
-import com.example.todoappdevelop.dto.user.UserRequestDto;
-import com.example.todoappdevelop.dto.user.UserResponseDto;
+import com.example.todoappdevelop.dto.LoginRequestDto;
+import com.example.todoappdevelop.dto.LoginResponseDto;
+import com.example.todoappdevelop.dto.UserRequestDto;
+import com.example.todoappdevelop.dto.UserResponseDto;
 import com.example.todoappdevelop.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

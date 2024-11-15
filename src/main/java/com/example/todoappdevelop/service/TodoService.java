@@ -1,6 +1,6 @@
 package com.example.todoappdevelop.service;
 
-import com.example.todoappdevelop.dto.todo.TodoResponseDto;
+import com.example.todoappdevelop.dto.TodoResponseDto;
 import com.example.todoappdevelop.entity.Todo;
 import com.example.todoappdevelop.repository.TodoRepository;
 import com.example.todoappdevelop.repository.UserRepository;

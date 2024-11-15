@@ -1,8 +1,8 @@
 package com.example.todoappdevelop.controller;
 
-import com.example.todoappdevelop.dto.todo.TodoCreateRequestDto;
-import com.example.todoappdevelop.dto.todo.TodoResponseDto;
-import com.example.todoappdevelop.dto.todo.TodoUpdateRequestDto;
+import com.example.todoappdevelop.dto.TodoCreateRequestDto;
+import com.example.todoappdevelop.dto.TodoResponseDto;
+import com.example.todoappdevelop.dto.TodoUpdateRequestDto;
 import com.example.todoappdevelop.service.TodoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.example.todoappdevelop.dto.user;
+package com.example.todoappdevelop.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

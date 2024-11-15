@@ -1,6 +1,6 @@
 package com.example.todoappdevelop.controller;
 
-import com.example.todoappdevelop.dto.user.UserResponseDto;
+import com.example.todoappdevelop.dto.UserResponseDto;
 import com.example.todoappdevelop.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
